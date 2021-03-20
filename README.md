@@ -3,6 +3,7 @@
 ## Database Setup
 Using postgres for my local setup. 
 * check config.py file to change db configurations.
+* create the database `fyn_db`
 
 change these configurations:
 
@@ -25,8 +26,9 @@ Note: change directory to `fyers_notificaiton`. Run db_script.py file to db cont
 ```python db_script.py```
 
 ## Local setup
-* create .env file to add environment variables (`ENV VARIABLES`)
-* create the virtualenv and activate the virtualenv
+* Create .env file to add environment variables (`ENV VARIABLES`)
+* Create the virtualenv and activate the virtualenv
+* Install the requirements `pip install -r requirements.txt`  
 * Environment Variables
   > LIFE_CYCLE: <configurations for prod, heroku, local>
 * Flask run command

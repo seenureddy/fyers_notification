@@ -5,6 +5,7 @@ import smtplib
 import jinja2
 import logging
 import csv
+from flask import abort
 from base64 import b64encode
 
 from email.mime.multipart import MIMEMultipart
@@ -134,6 +135,8 @@ def send_email(msg_base, tos):
     smtp.connect(SMPT_SERVER, port=SMPT_PORT)
     # Secure the connection
     smtp.starttls()
+    if not (FYS_SMPT_EMAIL and FYS_SMPT_PASSWORD):
+        raise abort(400, "No login credentials provided")
     smtp.login(FYS_SMPT_EMAIL, FYS_SMPT_PASSWORD)
     # tos = req_parse['mail_to'].split(',')
     email_logger.info(tos)
