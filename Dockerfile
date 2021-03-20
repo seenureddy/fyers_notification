@@ -10,4 +10,4 @@ RUN pip install -r requirements.txt
 
 EXPOSE 5000
 
-CMD ["python", "-m", "fys_notification.run"]
+CMD ["python", "-m", "fys_notification.runserver"]

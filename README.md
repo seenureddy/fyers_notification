@@ -32,7 +32,7 @@ Note: change directory to `fyers_notificaiton`. Run db_script.py file to db cont
 * Environment Variables
   > LIFE_CYCLE: <configurations for prod, heroku, local>
 * Flask run command
-  > python -m fys_notification.run
+  > python -m fys_notification.runserver
 * For logs: `fyers_notification/fyers_log.log`
 * Docker build `docker build . -t fyn`
 * Docker run command `docker run fyn`
