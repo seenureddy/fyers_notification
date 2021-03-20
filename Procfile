@@ -1,1 +1,1 @@
-web: gunicorn fys_notification.run --log-file -
+web: gunicorn app:app --log-file -
