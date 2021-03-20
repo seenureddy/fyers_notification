@@ -1,0 +1,1 @@
+web: gunicorn fys_notification.run:flask_app --log-file -
