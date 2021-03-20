@@ -32,14 +32,13 @@ swaggerrui_blueprint = get_swaggerui_blueprint(
 
 UPLOAD_FOLDER = os.getcwd() + '/fys_notification/media'
 
-flask_app = Flask(__name__)
-
 
 def create_app():
     """
     Create flask app with all blueprints and configurations options
     :return:
     """
+    flask_app = Flask(__name__)
 
     flask_app.register_blueprint(api_bp)
     flask_app.register_blueprint(swaggerrui_blueprint, url_prefix=SWAGGER_URL)
@@ -53,5 +52,5 @@ def create_app():
 
 
 if __name__ == "__main__":
-    app = create_app()
-    app.run(host="0.0.0.0", debug=True, port=5000)
+    flask_app = create_app()
+    flask_app.run(host="0.0.0.0", debug=True, port=5000)
