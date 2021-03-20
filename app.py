@@ -1,3 +1,2 @@
-from fys_notification.run import create_app
-app = create_app()
-app.run(host="0.0.0.0", debug=True, port=5001)
+from fys_notification.run import flask_app
+flask_app.run(host="0.0.0.0", debug=True, port=5001)

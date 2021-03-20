@@ -7,6 +7,7 @@ from flask_swagger_ui import get_swaggerui_blueprint
 # Local imports
 
 from fys_notification.app import api_bp
+from fys_notification.utils import get_env
 from fys_notification.models.db_models import db
 # from fys_notification.config import Config
 
@@ -47,7 +48,6 @@ def create_app():
     # DB Configuration
     app.config.from_object('fys_notification.config')
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-    # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.init_app(app)
 
     # with app.app_context():
@@ -57,5 +57,5 @@ def create_app():
 
 
 if __name__ == "__main__":
-    app = create_app()
-    app.run(host="0.0.0.0", debug=True, port=5000)
+    flask_app = create_app()
+    flask_app.run(host="0.0.0.0", debug=True, port=5000)
