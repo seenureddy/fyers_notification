@@ -30,7 +30,7 @@ def send_internal_email(total_sent_emails):
         user_name="Fyres Team",
         mail_to=FYS_ADMIN_EMAIL,
         subject="Analytics: Number of emails sent.",
-        message=total_sent_emails,
+        body=total_sent_emails,
         message_title="Email Sent  Analytics."
 
     )
@@ -54,15 +54,23 @@ def send_default_email(req_parse, template=None):
     user_name = req_parse['user_name']
     # Create the root message and fill in the from, to, and subject headers
     tos = req_parse['mail_to'].split(',')
-    cc_recipients = req_parse['cc_mail_to'].split(',')
-    bcc_recipients = req_parse['bcc_mail_to'].split(',')
+
     msg_base = MIMEMultipart('related')
     msg_base['Subject'] = f"Subject: {req_parse['subject']}"
     msg_base['From'] = FYS_SMPT_EMAIL
 
     msg_base['To'] = ", ".join(tos)
-    msg_base['Cc'] = ", ".join(cc_recipients)
-    msg_base['Bcc'] = ", ".join(bcc_recipients)
+    if req_parse.get('cc_mail_to'):
+        cc_recipients = req_parse['cc_mail_to'].split(',')
+        msg_base['Cc'] = ", ".join(cc_recipients)
+        # Adding the CC Email Address.
+        tos.extend(cc_recipients)
+    if req_parse.get('bcc_mail_to'):
+        bcc_recipients = req_parse['bcc_mail_to'].split(',')
+        msg_base['Bcc'] = ", ".join(bcc_recipients)
+        # Adding the BCC Email Address.
+        tos.extend(bcc_recipients)
+
     msg_base.preamble = 'This is a multi-part message in MIME format.'
 
     # Encapsulate the plain and HTML versions of the message body in an
@@ -90,9 +98,6 @@ def send_default_email(req_parse, template=None):
     msgText = MIMEText(html, 'html')
     msgAlternative.attach(msgText)
 
-    # Adding the CC and BCC Email Address.
-    tos.extend(cc_recipients)
-    tos.extend(bcc_recipients)
     return send_email(msg_base, tos)
 
 
@@ -175,8 +180,8 @@ def get_sent_email_analytics_data():
     next_day = day + timedelta(days=1)
     my_data = db.session.query(EmailDataAnalytics). \
         filter(EmailDataAnalytics.lastest_date_time >= day, EmailDataAnalytics.lastest_date_time < next_day).all()
-    # print("my_Da", my_data, dir(my_data))
-    sent_email_analytics = {}
+    email_logger.info(f"data: {my_data}")
+    sent_email_analytics = {'total_sent_emails': 0}
     for data in my_data:
-        sent_email_analytics['total_sent_emails'] = sent_email_analytics.get('total_sent_emails', 0) + data.email_sent_number
+        sent_email_analytics['total_sent_emails'] = sent_email_analytics.get('total_sent_emails') + data.email_sent_number
     send_internal_email(sent_email_analytics['total_sent_emails'])

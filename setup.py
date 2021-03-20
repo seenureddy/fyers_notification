@@ -14,7 +14,7 @@ with pathlib.Path('requirements.txt').open() as requirements_txt:
     ]
 
 setup(
-    name="fyers-notification",
+    name="fys_notification",
     version=full_version,
     author="Seenu",
     author_email="srinivasulur55.s@gmail.com",
@@ -23,6 +23,6 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/seenureddy/fyers_notification.git",
     include_package_data=True,
-    packages=["fyers-notification"],
+    packages=["fys_notification"],
     install_requires=install_requires
 )
