@@ -49,12 +49,9 @@ def create_app():
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     db.init_app(app)
 
-    # with flask_app.app_context():
-    #     db.create_all()
-
     return app
 
 
 if __name__ == "__main__":
-    app = create_app()
-    app.run(host="0.0.0.0", debug=True, port=5000)
+    flask_app = create_app()
+    flask_app.run(host="0.0.0.0", debug=True, port=5000)
