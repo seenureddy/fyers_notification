@@ -1,0 +1,11 @@
+requests
+python-dotenv
+flask-restful
+psycopg2
+flask_sqlalchemy
+Flask-Migrate
+flask_swagger_ui
+marshmallow
+wtforms[email]
+gunicorn
+Jinja2
