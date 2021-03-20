@@ -1,4 +1,4 @@
-# fyers_notification
+# Fyers_Email_Notification
 
 ## Database Setup
 Using postgres for my local setup. 
@@ -28,7 +28,7 @@ Note: change directory to `fyers_notificaiton`. Run db_script.py file to db cont
 ## Local setup
 * Create .env file to add environment variables (`ENV VARIABLES`)
 * Create the virtualenv and activate the virtualenv
-* Install the requirements `pip install -r requirements.txt`  
+* Install the requirements `pip install -r requirements.txt`
 * Environment Variables
   > LIFE_CYCLE: <configurations for prod, heroku, local>
 * Flask run command
@@ -53,7 +53,7 @@ from fys_notification.services.email import get_sent_email_analytics_data
 - FYS_SMPT_PASSWORD
 - FYS_SMPT_EMAIL
 - FYS_ADMIN_EMAIL
-
+* Change the default_email is `srinivasulur55.s@gmail.com`
 
 ### API Endpoints:
 * http://0.0.0.0:5000/fys/csv_upload
