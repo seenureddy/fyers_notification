@@ -38,6 +38,8 @@ Note: change directory to `fyers_notificaiton`. Run db_script.py file to db cont
 * Docker run command `docker run fyn`
 * Change the `paths` in logstash.conf and filebeat.yml to local machine full paths
   `/pp/fyers_notification/*_log.log` to `<full_path/pp/fyers_notification/*_log.log`
+* Gunicorn run command
+```gunicorn 'fys_notification.runserver:app' --preload -b 0.0.0.0:5000 --log-file -```
   
 * To get sent email information(`http://0.0.0.0:5000/fys/admin`)
 
