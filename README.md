@@ -1,5 +1,12 @@
 # Fyers_Email_Notification
 
+## Heroku Deploy
+Link: https://fyres-rest-api.herokuapp.com
+API Endpoints:
+* https://fyres-rest-api.herokuapp.com/fys/csv_upload
+* https://fyres-rest-api.herokuapp.com/fys/email
+* https://fyres-rest-api.herokuapp.com/fys/admin
+
 ## Database Setup
 Using postgres for my local setup. 
 * check config.py file to change db configurations.
